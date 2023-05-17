@@ -1,4 +1,4 @@
-# Minesweeper
+# Minesweeper\expose cells is incomplete
 Minesweeper: Design and implement a text-based Minesweeper game. Minesweeper is the classic
 single-player computer game where an NxN grid has B mines (or bombs) hidden across the grid. The
 remaining cells are either blank or have a number behind them. The numbers reflect the number of
