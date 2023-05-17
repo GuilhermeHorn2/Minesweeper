@@ -115,7 +115,10 @@ public class Minesweeper {
 		else {//blank type
 			board.get(x).remove(y);
 			board.get(x).add(y," ");
-			//exposing left cells:
+			
+			//exposing upper cells:
+			
+			//right
 			cell curr = null;
 			for(int i = x;i >= 0;i--){
 				for(int j = y;j < N;j++){
@@ -139,7 +142,59 @@ public class Minesweeper {
 				}
 				
 			}
-			//exposing right cells:
+			//left
+			curr = null;
+			for(int i = x;i >= 0;i--){
+				for(int j = y;j >= 0;j--){
+					cell c  = inner_board.get(i).get(j);
+					curr = c;
+					if(c.get_type().equals("bomb")) {
+						break;
+					}
+					if(c.get_type().equals("number")){
+						board.get(i).remove(j);
+						board.get(i).add(j,""+c.get_num());
+						break;
+					}
+					else if(c.get_type().equals("blank")){
+						board.get(i).remove(j);
+						board.get(i).add(j," ");
+					}
+				}
+				if(!curr.get_type().equals("blank") && i != x) {
+					break;
+				}
+				
+			}
+			//end of upper cells
+			
+			//exposing lower cells:
+			
+			//right
+			curr = null;
+			for(int i = x;i < N;i++){
+				for(int j = y;j < N;j++){
+					cell c  = inner_board.get(i).get(j);
+					curr = c;
+					if(c.get_type().equals("bomb")) {
+						break;
+					}
+					if(c.get_type().equals("number")){
+						board.get(i).remove(j);
+						board.get(i).add(j,""+c.get_num());
+						break;
+					}
+					else if(c.get_type().equals("blank")){
+						board.get(i).remove(j);
+						board.get(i).add(j," ");
+					}
+				}
+				if(curr.get_type().equals("blank") && i != x) {
+					break;
+				}
+			}
+			
+			//left
 			curr = null;
 			for(int i = x;i < N;i++){
 				for(int j = y;j >= 0;j--){
